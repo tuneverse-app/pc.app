@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #0b1020;
+    color: white;
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background: #12192d;
+}
+
+.sidebar h1 {
+    margin-bottom: 30px;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #1c2541;
+    color: white;
+}
+
+main {
+    flex: 1;
+    padding: 30px;
+    margin-bottom: 110px; /* Margen para que las canciones no queden ocultas detrás del reproductor */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+input {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    width: 250px;
+    background: #161f36;
+    color: white;
+}
+
+.songs {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 220px;
+    background: #161f36;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.info {
+    padding: 15px;
+}
+
+/* ==========================================================================
+   BARRA REPRODUCTOR FLOTANTE PREMIUM
+   ========================================================================== */
+
+.player {
+    position: fixed;
+    bottom: 24px;
+    
+    /* Centrado inteligente respetando la barra lateral */
+    left: 280px; 
+    right: 30px;
+    
+    padding: 12px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    /* Cristal esmerilado translúcido (Glassmorphism) */
+    background: rgba(22, 31, 54, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    
+    /* Estructura y sombras */
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.player-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#cover {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.player-text h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.player-text p {
+    margin: 3px 0 0 0;
+    font-size: 12px;
+    color: #a0aec0;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Botones circulares translúcidos */
+.control-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: scale(1.06);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+.play-main {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.14);
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   REPRODUCTOR EN PANTALLA COMPLETA
+   ========================================================================== */
+
+.full-player {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: .4s;
+    overflow: hidden;
+}
+
+.full-player.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.bg-blur {
+    position: absolute;
+    inset: -50px;
+    background-size: cover;
+    background-position: center;
+    filter: blur(80px);
+    transform: scale(1.3);
+    opacity: .5;
+}
+
+.bg-blur::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+}
+
+.player-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding: 80px;
+    color: white;
+}
+
+.full-cover {
+    width: 420px;
+    height: 420px;
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+.song-info h1 {
+    font-size: 4rem;
+}
+
+.song-info h3 {
+    opacity: .8;
+}
